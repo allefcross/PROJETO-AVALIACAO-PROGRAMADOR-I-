@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/modeloSistema.xhtml">
+
+	<ui:define name="menu">
+		<ui:include src="/includes/menuPrincipal.xhtml" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<p:dialog widgetVar="dlgPatNovo" closable="true" draggable="true"
+			resizable="false" header="Cadastro de Partidas">
+			<h:form id="frmPatNovo">
+
+				<h:panelGrid columns="2" id="pnlPatNovo">
+
+					<p:outputLabel value="Serie" />
+					<p:selectOneMenu size="30" maxlength="10"
+						value="#{MBPartidas.partidas.serie}">
+						<f:selectItem itemLabel="Selecione uma serie" itemValue="" />
+						<f:selectItem itemLabel="A" itemValue="A" />
+						<f:selectItem itemLabel="B" itemValue="B" />
+						<f:selectItem itemLabel="C" itemValue="C" />
+						<f:selectItem itemLabel="D" itemValue="D" />
+					</p:selectOneMenu>
+
+					<p:outputLabel value="Campeonato" />
+					<p:inputText size="30" maxlength="20"
+						value="#{MBPartidas.partidas.campeonato}" />
+
+					<p:outputLabel value="Nome 1º Time" />
+					<p:inputText size="30" maxlength="20"
+						value="#{MBPartidas.partidas.time1}" />
+						
+					<p:outputLabel value="Nome 2º Time" />
+					<p:inputText size="30" maxlength="20"
+						value="#{MBPartidas.partidas.time2}" />
+
+				</h:panelGrid>
+
+				<h:panelGrid columns="1">
+					<p:commandButton value="Salvar" actionListener="#{MBPartidas.novo}"
+						oncomplete="PF('dlgPatNovo').hide();" />
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>
